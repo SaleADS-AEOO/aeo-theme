@@ -1,0 +1,11 @@
+<header class="site-header">
+  <a href="{{ .Site.Home.RelPermalink }}" class="site-title">{{ .Site.Title }}</a>
+  <nav class="site-nav">
+    {{ if .IsTranslated }}
+      {{ range .Translations }}
+      <a href="{{ .RelPermalink }}">{{ if eq .Lang "es" }}Español{{ else }}English{{ end }}</a>
+      {{ end }}
+    {{ end }}
+    <a href="{{ "posts/" | relLangURL }}">{{ if eq .Lang "es" }}Artículos{{ else }}Articles{{ end }}</a>
+  </nav>
+</header>
