@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="home-page">
+  <h1>{{ .Site.Title }}</h1>
+  <p class="site-description">{{ .Site.Params.description }}</p>
+
+  <section class="latest-articles">
+    <h2>{{ if eq .Lang "es" }}Últimos Artículos{{ else }}Latest Articles{{ end }}</h2>
+    <div class="articles-grid">
+      {{ range first 10 .Site.RegularPages }}
+      <article class="article-card">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p class="article-meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        </p>
+        <p class="article-excerpt">{{ .Description | truncate 160 }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </section>
+</div>
+{{ end }}
